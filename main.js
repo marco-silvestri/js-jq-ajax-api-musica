@@ -17,27 +17,30 @@ $(document).ready(function() {
 		url: myApi,
 		success: function (data) {
 			if(data.success){
-				// Retrieve albums number and print a card accordingly to its data
+				// Retrieve albums number
 				var albumNumber = data.response.length;
 				for (var i = 0; i < albumNumber; i++){
 					var thisAlbum = data.response[i];
 					fillAlbum(thisAlbum);
 				}
 			}
+		},
+		error: function(){
+			console.log('Cannot retrieve the API');
 		}
 	});
 
+	// Ajax on select
 	genreSelector.change(function () { 
 		var cdCard = $('.cd');
 		var currentGenre = genreSelector.val();
-		console.log(currentGenre);
 		cdCard.remove();
 		$.ajax({
 			type: "GET",
 			url: myApi,
 			success: function (data) {
 				if(data.success){
-					// Retrieve albums number and print a card accordingly to its data
+					// Retrieve albums number and compare with the select
 					var albumNumber = data.response.length;
 					for (var i = 0; i < albumNumber; i++){
 						var thisAlbum = data.response[i];
@@ -46,15 +49,18 @@ $(document).ready(function() {
 						}
 					}
 				}
+			},
+			error: function(){
+				console.log('Cannot retrieve the API');
 			}
 		});	
 	});
-
 
 /************ 
 * Functions
 ************/
 
+// Print a card accordingly to retrieved data
 function fillAlbum(thisAlbum){
 	var pushAlbum = {
 		cdCard : 'cd',
