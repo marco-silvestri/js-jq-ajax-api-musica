@@ -11,20 +11,22 @@
     <body>
         <header>
             <div class="container">
-                <img src="logo.png" alt="logo" />
+                <img src="logo.png" alt="logo">
             </div>
         </header>
 
         <div class="cds-container container">
-            <!-- Disco ad esempio -->
-            <div class="cd">
-                <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Ten_Summoner%27s_Tales.jpg" alt="">
-                <h3>Ten's Summoners Tales</h3>
-                <span class="author">Sting</span>
-                <span class="year">1993</span>
-            </div>
+
         </div>
         
+        <script id="cd-template" type="text/x-handlebars-template">
+            <div class="{{cdCard}}">
+                <img src={{cdThumbnail}} alt="">
+                <h3>{{cdTitle}}</h3>
+                <span class="author">{{cdAuthor}}</span>
+                <span class="year">{{cdYear}}</span>
+            </div>
+        </script>
 
         <script src="main.js" charset="utf-8"></script>
     </body>
